@@ -4,44 +4,39 @@ shopping_list = []
 
 while True:
     print("\n--- Shopping List Manager ---")
-    print("1. View shopping list")
-    print("2. Add an item")
-    print("3. Remove an item")
-    print("4. Exit")
+    print("Commands: add / remove / show / done")
 
-    choice = input("Choose an option (1-4): ").strip()
+    choice = input("Enter a command: ").strip().lower()
 
-    if choice == "1":
-        if shopping_list:
-            print("\nYour shopping list:")
-            for item in shopping_list:
-                print("-", item)
-        else:
-            print("Your shopping list is empty.")
+    if choice == "add":
+        item = input("Enter an item to add: ").strip()
 
-    elif choice == "2":
-        item = input("Enter the item to add: ").strip()
-
-        if not item:
-            print("The item name cannot be empty.")
-        elif item in shopping_list:
-            print(item, "is already on the list.")
-        else:
+        if item:
             shopping_list.append(item)
             print(item, "has been added.")
+        else:
+            print("Item cannot be empty.")
 
-    elif choice == "3":
-        item = input("Enter the item to remove: ").strip()
+    elif choice == "remove":
+        item = input("Enter an item to remove: ").strip()
 
         if item in shopping_list:
             shopping_list.remove(item)
             print(item, "has been removed.")
         else:
-            print(item, "was not found on the list.")
+            print("That item is not on your list.")
 
-    elif choice == "4":
-        print("Thank you for using the Shopping List Manager.")
+    elif choice == "show":
+        if shopping_list:
+            print("Your shopping list:")
+            for item in shopping_list:
+                print(item)
+        else:
+            print("Your shopping list is empty.")
+
+    elif choice == "done":
+        print("Goodbye!")
         break
 
     else:
-        print("Invalid choice. Please enter 1, 2, 3, or 4.")
+        print("Please enter add, remove, show, or done.")
