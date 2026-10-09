@@ -3,20 +3,22 @@
 shopping_list = ["bread", "milk", "eggs", "rice", "apples"]
 
 print("===== SHOPPING LIST REPORT =====")
+print("Shopping list:", shopping_list)
 
-item_count = 0
+# Count items with more than four letters
+long_items_count = 0
 
 for item in shopping_list:
-    item_count += 1
-    print(str(item_count) + ". " + item.title())
+    if len(item) > 4:
+        long_items_count += 1
 
-print("Total number of items:", item_count)
+print("Items with more than four letters:", long_items_count)
 
-if shopping_list:
-    print("First item:", shopping_list[0].title())
-    print("Last item:", shopping_list[-1].title())
+# Find the longest item using a manual loop comparison
+longest_item = shopping_list[0]
 
-if "milk" in shopping_list:
-    print("Milk is on the shopping list.")
-else:
-    print("Milk is not on the shopping list.")
+for item in shopping_list:
+    if len(item) > len(longest_item):
+        longest_item = item
+
+print("Longest item:", longest_item)
